@@ -1,0 +1,15 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="documentation/Feature detection" />
+
+# Browser feature detection
+The ```<FeatureDetector>``` component is loading first and detecting browser features to be able to tailor the experience based on available browser features.
+
+It adding classes to the HTML element, what can be used in the styling of each component.
+
+## Touch
+Detects if the browser supports the W3C Touch Events API. Following the naming from Modernizr, and using the same detection method.
+
+It can be used with CSS Modules utilizing the global pseudo-class in the following way:
+
+```html:global(.touchevents) .Button:hover {}```

@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomePage Component should render 1`] = `
+<div>
+  <p>
+    Language: 
+    enGB
+  </p>
+  <button>
+    Spanish
+  </button>
+  <button>
+    English
+  </button>
+  <p>
+    Test paragraph in English
+  </p>
+</div>
+`;

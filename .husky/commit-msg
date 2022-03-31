@@ -1,0 +1,14 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# commit message check
+[[ $(cat $1) =~ [A-Z]+-[0-9]+.[[:space:]][a-zA-Z0-9[[:space:]]]* ]] && echo "Commit message OK." || {
+    echo >&2 "ERROR: Commit message requires JIRA key, colon and space before commit message. Example: \"ABC-123: Test Commit\""
+    exit 1
+}
+
+# Branch name check
+[[ $(git rev-parse --abbrev-ref HEAD) =~ ^(feature|fix|release|hotfix)\/[A-Z]+-[0-9]+_[a-zA-Z0-9._-]+ ]] && echo "Branch name OK." || {
+    echo "ERROR: Branch name should follow the format: fix/JT-123 or feature/JT-12_some_info, allowed prefixes: feature, fix, hotfix, release"
+    exit 1
+}
