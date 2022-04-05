@@ -1,0 +1,12 @@
+version: '2'
+services:
+  web:
+    image: node:16.14.2-alpine
+    command: sh -c "yarn && yarn start"
+    volumes:
+      - .:/usr/app/
+    working_dir: /usr/app
+    ports:
+      - "3000:3000"
+    environment:
+      REACT_APP_DISABLED_FEATURES: "[]"
