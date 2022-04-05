@@ -1,0 +1,22 @@
+[
+    {
+        "title":"Example Feature 1",
+        "desc":"This is the feature we going to use for things.",
+        "tag":"FEATURE_1"
+    },
+    {
+        "title":"Example Feature 2",
+        "desc":"This is the feature we going to use for things.",
+        "tag":"FEATURE_2"
+    },
+    {
+        "title":"Example Feature 3",
+        "desc":"This is the feature we going to use for things.",
+        "tag":"FEATURE_3"
+    },
+    {
+        "title":"Example Feature 4",
+        "desc":"This is the feature we going to use for things.",
+        "tag":"FEATURE_4"
+    }
+]

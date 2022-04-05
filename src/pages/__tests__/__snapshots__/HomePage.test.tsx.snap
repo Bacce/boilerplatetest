@@ -5,6 +5,18 @@ exports[`HomePage Component should render 1`] = `
   <div
     class="main-container"
   >
+    <div>
+      Feature 1 is enabled
+    </div>
+    <div>
+      Feature 2 is enabled
+    </div>
+    <div>
+      Feature 3 is enabled
+    </div>
+    <div>
+      Feature 4 is enabled
+    </div>
     <div
       class="grid-container"
     >

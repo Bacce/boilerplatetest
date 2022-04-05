@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feature toggles</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 80%;
+      font-family: sans-serif;
+    }
+    .toggles-container {
+      padding: 20px;
+    }
+    
+    .feature-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      border: 1px solid grey;
+      margin: 5px 0;
+    }
+    
+    .feature-container:hover {
+      background: #DDD;
+    }
+    
+    input {
+      margin: 20px;
+      cursor: pointer;
+    }
+    
+    label {
+      cursor: pointer;
+      flex-grow: 1;
+    }
+    
+    label p:first-child {
+      font-weight: bold;
+      margin-bottom: -.5em;
+    }
+  </style>
+</head>
+<body>
+  <h1>Feature toggles</h1>
+  <p>Unselect the features you want to disable</p>
+  <div class="toggles-container" id="toggles-container"></div>
+  
+  <script>
+    let featureList = [];
+    let featureEnabled = [];
+    
+    // Update localstorage
+    const save = () => {
+      const checkboxes = document.querySelectorAll(".feature-cb");
+      let enabledFeatures = [];
+      checkboxes.forEach((checkbox)=>{
+        if(!checkbox.checked) enabledFeatures.push(checkbox.name);
+      });
+      
+      localStorage.setItem('jt-disabled-features', JSON.stringify(enabledFeatures));
+    }
+
+    // Create markup
+    const generateCheckboxes = () => {
+      const container = document.querySelector('#toggles-container');
+      let content = "";
+      featureList.forEach((feature, id)=> {
+        content += `<div class="feature-container">
+          <input class="feature-cb" type="checkbox" name="${feature.tag}" id="cb${id}" ${(featureEnabled.indexOf(feature.tag)>-1)?"":"checked"} onChange="save()">
+          <label for="cb${id}"><p>${feature.title}</p><p>${feature.desc}</p></label>
+        </div>`;
+      });
+
+      container.innerHTML = content;
+    }
+    
+    // Initialization
+    (() => {
+      let featuresLS = localStorage.getItem("jt-disabled-features");
+      if(featuresLS) {
+        featureEnabled = JSON.parse(featuresLS);
+      }
+      
+      fetch("./features.json").then(response => response.json())
+      .then(json => {
+        featureList = json;
+        generateCheckboxes();
+      });
+      
+    })();
+  </script>
+</body>
+</html>

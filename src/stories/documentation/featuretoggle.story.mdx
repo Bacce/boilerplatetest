@@ -1,0 +1,19 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="documentation/Feature toggle" />
+
+# Feature toggles
+Feature toggles are configuration for the application to disable certain functionality on-demand.
+
+## Implementation
+Two component is related to feature toggling.
+
+The `<FeatureToggleProvider/>` wraps the application and take care of loading the default configuration when needed.
+
+The `<FeatureToggle>` component is used to wrap features we want to disable, it have a `feature` property to identify what feature we want to connect it to, and an optional `offTemplate` property where we can set JSX we want to render in case the feature is disabled.
+
+## Default configuration
+With environment variables there is a way to setup default list of disabled features if needed.
+
+## Testing
+Feature toggles are availale at the `/debug` url, where tags can be easily disabled/enabled.

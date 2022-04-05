@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FeatureToggle Component should render children when feature is not on disabled list 1`] = `
+<div>
+  testcontent
+</div>
+`;
+
+exports[`FeatureToggle Component should render empty template when feature is disabled and no offTemplate is present 1`] = `<div />`;
+
+exports[`FeatureToggle Component should render off template when feature is disabled and offTemplate is available 1`] = `
+<div>
+  testoffcontent
+</div>
+`;
