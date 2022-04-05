@@ -2,18 +2,135 @@
 
 exports[`HomePage Component should render 1`] = `
 <div>
-  <p>
-    Language: 
-    enGB
-  </p>
-  <button>
-    Spanish
-  </button>
-  <button>
-    English
-  </button>
-  <p>
-    Test paragraph in English
-  </p>
+  <div
+    class="main-container"
+  >
+    <div
+      class="grid-container"
+    >
+      <div
+        class="col-sm-1 col-md-1 col-lg-1"
+      >
+        <p>
+          Language: 
+          enGB
+        </p>
+        <button>
+          Spanish
+        </button>
+        <button>
+          English
+        </button>
+        <p>
+          Test paragraph in English
+        </p>
+      </div>
+    </div>
+    <div
+      class="grid-container"
+    >
+      <div
+        class="col-sm-2 col-md-4 col-lg-6"
+      >
+        <div
+          style="width: 8px; height: 8px;"
+        />
+        <div
+          class="container"
+        />
+      </div>
+      <div
+        class="col-sm-2 col-md-4 col-lg-6"
+      >
+        <div
+          class="container"
+        />
+      </div>
+      <div
+        class="col-sm-1 col-md-1 col-lg-1"
+      >
+        <div
+          class="container"
+        />
+      </div>
+      <div
+        class="col-sm-1 col-md-1 col-lg-1"
+      >
+        <div
+          class="container"
+        />
+      </div>
+      <div
+        class="col-sm-1 col-md-1 col-lg-1"
+      >
+        <div
+          class="container"
+        />
+      </div>
+      <div
+        class="col-sm-1 col-md-1 col-lg-1"
+      >
+        <div
+          class="container"
+        />
+      </div>
+      <div
+        class="col-sm-1 col-md-1 col-lg-1"
+      >
+        <div
+          class="container"
+        />
+      </div>
+      <div
+        class="col-sm-1 col-md-1 col-lg-1"
+      >
+        <div
+          class="container"
+        />
+      </div>
+      <div
+        class="col-sm-1 col-md-1 col-lg-1"
+      >
+        <div
+          class="container"
+        />
+      </div>
+      <div
+        class="col-sm-1 col-md-1 col-lg-1"
+      >
+        <div
+          class="container"
+        />
+      </div>
+      <div
+        class="col-sm-1 col-md-1 col-lg-1"
+      >
+        <div
+          class="container"
+        />
+      </div>
+      <div
+        class="col-sm-1 col-md-1 col-lg-1"
+      >
+        <div
+          class="container"
+        />
+      </div>
+      <div
+        class="col-sm-1 col-md-1 col-lg-1"
+      >
+        <div
+          class="container"
+        />
+      </div>
+      <div
+        class="col-sm-1 col-md-1 col-lg-1"
+      >
+        <div
+          class="container"
+        />
+      </div>
+    </div>
+  </div>
 </div>
 `;

@@ -1,1 +1,14 @@
 /* Exception from CSS modules to be able to use global styles, like reset, keyframe anim, css variables, etc. */
+:root {
+  --theme-grey-950: #141414;
+  --theme-grey-800: #292929;
+  --theme-grey-700: #303030;
+  --theme-grey-600: #404040;
+  --theme-grey-500: #6e6e6e;
+  --theme-grey-400: #919191;
+  --theme-grey-300: #acacac;
+  --theme-grey-200: #c8c8c8;
+  --theme-grey-100: #e1e1e1;
+  --theme-grey-50: #f1f1f1;
+  --theme-grey-25: #f8f8f8;
+}

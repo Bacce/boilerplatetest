@@ -1,0 +1,6 @@
+.container {
+  width: 100%;
+  min-height: 20px;
+  margin-bottom: 5px;
+  background: var(--theme-grey-100);
+}

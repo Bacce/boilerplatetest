@@ -1,0 +1,35 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="documentation/Layout" />
+
+# Layout
+## MainContainer
+For the layout to work properly, it should be wrapped inside the `<MainContainer>` component, what will provide the main column of the UI, and it's positioning with whitespace on the sides.
+
+## GridContainer
+The `<GridContainer>` component is the wrapper for the column elements, not used on itself, have no properties.
+
+## Col
+The `<Col>` is the column component. The grid is varying column count based on breakpoints. Each column can be configured with the `sm`, `md`,`lg` properties how wide it should be. 
+
+| breakpoint   | sm      | md         | lg          |
+|--------------|---------|------------|-------------|
+| screen size  | 0-767px | 768-1280px | 1280-1920px |
+| column count | 4       | 8          | 12          |
+
+
+## Example code
+
+```<MainContainer>
+    <GridContainer>
+        <Col sm={4} md={8} lg={12}>
+            <p>content</p>
+        </Col>
+        <Spacer size={8} />
+        <Col sm={4} md={8} lg={12}>
+            <p>content</p>
+        </Col>
+    </GridContainer>
+</MainContainer>```
+
+

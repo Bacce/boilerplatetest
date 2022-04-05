@@ -1,3 +1,6 @@
+import { MainContainer } from '../src/components/Layout';
+import '../src/App.css';
+
 const customViewports = {
   LG: {
     name: 'Desktop 1280 (LG: 1280 - 1920)',
@@ -37,3 +40,11 @@ export const parameters = {
     },
   }
 }
+
+export const decorators = [(Story) => <>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  {/* Load fonts here */}
+  <MainContainer>
+    <Story/>
+  </MainContainer>
+</>];
