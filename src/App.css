@@ -1,14 +1,28 @@
 /* Exception from CSS modules to be able to use global styles, like reset, keyframe anim, css variables, etc. */
 :root {
-  --theme-grey-950: #141414;
-  --theme-grey-800: #292929;
-  --theme-grey-700: #303030;
-  --theme-grey-600: #404040;
-  --theme-grey-500: #6e6e6e;
-  --theme-grey-400: #919191;
-  --theme-grey-300: #acacac;
-  --theme-grey-200: #c8c8c8;
-  --theme-grey-100: #e1e1e1;
-  --theme-grey-50: #f1f1f1;
-  --theme-grey-25: #f8f8f8;
+  /* PRIMARY */
+  --theme-primary: #a2cd3a; /* Lime */
+  --theme-primary-disabled: #d2ea97;
+  --theme-primary-active: #8bae39;
+
+  /* SECONDARY 1 */
+  --theme-secondary-1: #263b96; /* Cobalt */
+  --theme-secondary-1-disabled: #a7b0d3;
+  --theme-secondary-1-active: #152362;
+
+  /* SECONDARY 2 */
+  --theme-secondary-2: #005c97; /* Ocean */
+  --theme-secondary-2-disabled: #a5c5d9;
+  --theme-secondary-2-active: #003b62;
+
+  /* GREYSCALE */
+  --theme-black: #000;
+  --theme-grey-dark: #333;
+  --theme-grey-graphite: #5c5c5c;
+  --theme-grey-mid: #858585;
+  --theme-grey-silver: #adadad;
+  --theme-grey-light: #d6d6d6;
+  --theme-grey-cloud: #ebebeb;
+  --theme-grey-paper: #fafafa;
+  --theme-white: #fff;
 }

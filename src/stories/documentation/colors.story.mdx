@@ -2,4 +2,45 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta title="documentation/Colors" />
 
-# The color palette and usage
+export const ColorCard = ({color, name, variable}) => (
+    <div style={{margin: 5, border: "1px solid black", display: "inline-block", position: "relative",}}>
+        <div style={{width: 170, height: 50, background: `${color}`, padding: 5, }}></div>
+        <div style={{width: 170, padding: 5, lineHeight: 1.5, fontSize: 11}}><b style={{fontSize: 13}}>{name}</b><br/>{variable}<br/>{color}</div>
+    </div>
+);
+
+# Color palette and usage
+
+Theme colors with name, CSS variable name and HEX color code. In the code always refer to these colors with their CSS variable name instead of using the color code.
+
+The theme colors are stored in the src/App.css file.
+
+## Primary color
+
+<ColorCard color="#AAFF22" name="Lime" variable="--theme-primary" />
+<ColorCard color="#D2EA97" name="Lime Disabled" variable="--theme-primary-disabled" />
+<ColorCard color="#8BAE39" name="Lime Active" variable="--theme-primary-active" />
+
+## Secondary color #1
+
+<ColorCard color="#263B96" name="Cobalt" variable="--theme-secondary-1" />
+<ColorCard color="#A7B0D3" name="Cobalt Disabled" variable="--theme-secondary-1-disabled" />
+<ColorCard color="#152362" name="Cobalt Active" variable="--theme-secondary-1-active" />
+
+## Secondary color #2
+
+<ColorCard color="#005C97" name="Ocean" variable="--theme-secondary-2" />
+<ColorCard color="#A5C5D9" name="Ocean Disabled" variable="--theme-secondary-2-disabled" />
+<ColorCard color="#003B62" name="Ocean Active" variable="--theme-secondary-2-active" />
+
+## Greyscale
+
+<ColorCard color="#000000" name="Black" variable="--theme-black" />
+<ColorCard color="#333333" name="Dark Grey" variable="--theme-grey-dark" />
+<ColorCard color="#5C5C5C" name="Graphite" variable="--theme-grey-graphite" />
+<ColorCard color="#858585" name="Mid Grey" variable="--theme-grey-mid" />
+<ColorCard color="#ADADAD" name="Silver" variable="--theme-grey-silver" />
+<ColorCard color="#D6D6D6" name="Light Grey" variable="--theme-grey-light" />
+<ColorCard color="#EBEBEB" name="Cloud" variable="--theme-grey-cloud" />
+<ColorCard color="#FAFAFA" name="Paper" variable="--theme-grey-paper" />
+<ColorCard color="#FFFFFF" name="White" variable="--theme-white" />
