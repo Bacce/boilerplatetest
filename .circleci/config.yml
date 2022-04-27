@@ -5,25 +5,62 @@ version: 2.1
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  node-test:
+  lint:
     docker:
       - image: cimg/node:16.14.2
-    resource_class: small # Run in a 1cpu vm for docker
     steps:
       - checkout
       - run:
-          name: "Node version"
-          command: node --version
+          name: "Install dependencies"
+          command: yarn
       - run:
-          name: "File list multiple command test"
-          command: |
-            ls -al
-            echo '^^^The files in your repo^^^'
+          name: "Lint"
+          command: yarn lint
       - run:
-          name: "Yarn version"
-          command: |
-            yarn --version
-            echo '^^^The files in your repo^^^'
+          name: "Style Lint"
+          command: yarn stylelint
+  test:
+    docker:
+      - image: cimg/node:16.14.2
+    steps:
+      - checkout
+      - run:
+          name: "Install dependencies"
+          command: yarn
+      - run:
+          name: "Lint"
+          command: yarn lint
+      - run:
+          name: "Style Lint"
+          command: yarn stylelint
+  deploy:
+    docker:
+      - image: cimg/node:16.14.2
+    steps:
+      - checkout
+      - run:
+          name: "Install dependencies"
+          command: yarn
+      - run:
+          name: "Build"
+          command: yarn build
+      - run:
+          name: "Deployment"
+          command: "echo Deployment TODO!"
+  deploy_storybook:
+    docker:
+      - image: cimg/node:16.14.2
+    steps:
+      - checkout
+      - run:
+          name: "Install dependencies"
+          command: yarn
+      - run:
+          name: "Build"
+          command: yarn build
+      - run:
+          name: "Deployment"
+          command: "echo Deployment TODO!"
 
   say-hello:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
@@ -42,9 +79,21 @@ jobs:
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  say-hello-workflow:
+  build_and_test:
     jobs:
-      - say-hello
-  testing-node:
-    jobs:
-      - node-test
+    - lint
+    - test:
+        requires:
+          - lint
+    - hold:
+        type: approval
+        requires:
+          - test
+    - hold2:
+        type: approval
+    - deploy:
+        requires:
+          - hold
+    - deploy_storybook:
+        requires:
+          - hold2
