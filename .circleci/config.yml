@@ -51,33 +51,16 @@ jobs:
           name: "Deployment"
           command: "echo Deployment TODO!"
 
-  say-hello:
-    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
-    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
-    docker:
-      - image: cimg/base:stable
-    resource_class: small # Run in a 1cpu vm for docker
-    # Add steps to the job
-    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
-    steps:
-      - checkout
-      - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
-
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  build_and_test:
+  deployment:
     jobs:
-    - lint
-    - test:
-        requires:
-          - lint
+    - lint_and_test
     - continue_to_build_and_deploy:
         type: approval
         requires:
-          - test
+          - lint_and_test
     - continue_to_storybook_build_and_deploy:
         type: approval
     - deploy:
