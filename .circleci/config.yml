@@ -5,7 +5,7 @@ version: 2.1
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  lint:
+  lint_and_test:
     docker:
       - image: cimg/node:16.14.2
     steps:
@@ -19,20 +19,9 @@ jobs:
       - run:
           name: "Style Lint"
           command: yarn stylelint
-  test:
-    docker:
-      - image: cimg/node:16.14.2
-    steps:
-      - checkout
       - run:
-          name: "Install dependencies"
-          command: yarn
-      - run:
-          name: "Lint"
-          command: yarn lint
-      - run:
-          name: "Style Lint"
-          command: yarn stylelint
+          name: "Unit tests"
+          command: yarn test
   deploy:
     docker:
       - image: cimg/node:16.14.2
@@ -57,7 +46,7 @@ jobs:
           command: yarn
       - run:
           name: "Build"
-          command: yarn build
+          command: yarn build-storybook
       - run:
           name: "Deployment"
           command: "echo Deployment TODO!"
@@ -85,15 +74,15 @@ workflows:
     - test:
         requires:
           - lint
-    - hold:
+    - continue_to_build_and_deploy:
         type: approval
         requires:
           - test
-    - hold2:
+    - continue_to_storybook_build_and_deploy:
         type: approval
     - deploy:
         requires:
-          - hold
+          - continue_to_build_and_deploy
     - deploy_storybook:
         requires:
-          - hold2
+          - continue_to_storybook_build_and_deploy
