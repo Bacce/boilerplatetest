@@ -29,42 +29,36 @@ jobs:
       - run:
           name: "Unit tests"
           command: yarn test
-  
+
   deploy_app:
     docker:
       - image: cimg/node:16.14.2
     steps:
       - checkout
-      - when:
-          condition: << pipeline.parameters.build-storybook >>
-          steps:
-            - run:
-                name: "Install dependencies"
-                command: yarn
-            - run:
-                name: "Build"
-                command: yarn build
-            - run:
-                name: "Deployment"
-                command: "echo Deployment TODO!"
-  
+      - run:
+          name: "Install dependencies"
+          command: yarn
+      - run:
+          name: "Build"
+          command: yarn build
+      - run:
+          name: "Deployment"
+          command: "echo Deployment TODO!"
+
   deploy_storybook:
     docker:
       - image: cimg/node:16.14.2
     steps:
       - checkout
-      - when:
-          condition: << pipeline.parameters.build-storybook >>
-          steps:
-            - run:
-                name: "Install dependencies"
-                command: yarn
-            - run:
-                name: "Build"
-                command: yarn build-storybook
-            - run:
-                name: "Deployment"
-                command: "echo Deployment TODO!"
+      - run:
+          name: "Install dependencies"
+          command: yarn
+      - run:
+          name: "Build"
+          command: yarn build-storybook
+      - run:
+          name: "Deployment"
+          command: "echo Deployment TODO!"
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -75,6 +69,14 @@ workflows:
     - deploy_app:
         requires:
           - lint_and_test
-    - deploy_storybook:
-        requires:
-          - lint_and_test
+
+  storybook:
+    when: << pipeline.parameters.build-storybook >>
+    jobs:
+    - deploy_storybook
+        #filters:
+         # branches:
+            #only: /feature\/(?:.+)/ #every feature branch deploy storybook if the build-storybook is set
+
+
+
