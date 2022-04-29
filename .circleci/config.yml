@@ -96,7 +96,9 @@ workflows:
     jobs:
     - pause:
         type: approval
-    - deploy_storybook
+    - deploy_storybook:
+        requires:
+          - pause
         #filters:
          # branches:
             #only: /feature\/(?:.+)/ #every feature branch deploy storybook if the build-storybook is set
